@@ -14,12 +14,15 @@
   	<p>The library has the following record counts:</p>
   	<ul>
     	<li><strong>Books:</strong> {{ num_books }}</li>
-		<form action="{% url 'src_frg' text %}" method="post">
-			{% csrf_token %}
-			<input type="text" name="input" value="{{text}}">
+
+    	<!--	
+		<form action="{ % url 'src_frg' text %}" method="post">
+			{ % csrf_token %}
+			<input type="text" name="input" value="{ {text}}">
 			<input type="submit" value="Search">
 		</form>
-    	
+    	-->
+
     	<li><strong>Copies:</strong> {{ num_instances }}</li>
     	<li><strong>Copies available:</strong> {{ num_instances_available }}</li>
     	<li><strong>Authors:</strong> {{ num_authors }}</li>

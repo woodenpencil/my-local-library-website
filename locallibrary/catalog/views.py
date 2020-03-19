@@ -21,10 +21,9 @@ def index(request):
         context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors},
     )
 
+"""
 def search_fragment(request, fragment):
-	"""
-	Searchs and displays books that include given fragment in their titles
-	"""
+	#Searchs and displays books that include given fragment in their titles
 	list_of_all_books = Book.objects.all()
 	list_of_req_books = [book for book in list_of_all_books if book.title.find(fragment)]
 
@@ -33,4 +32,4 @@ def search_fragment(request, fragment):
 		"src_frg.html", 
 		context={"list_of_req_books":list_of_req_books}, 
 	)
-
+"""
