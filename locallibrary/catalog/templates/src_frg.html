@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+	<title>Search books from fragment</title>    
+{% endblock title %}}
+
+{% block content %}
+	<ul>
+		{% for book in list_of_req_books %}
+			<li>
+				{book.title}
+			</li>
+		{% endfor %}   
+	</ul>
+{% endblock content %}}
