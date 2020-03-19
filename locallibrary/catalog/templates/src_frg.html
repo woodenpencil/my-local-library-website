@@ -5,11 +5,16 @@
 {% endblock title %}}
 
 {% block content %}
-	<ul>
-		{% for book in list_of_req_books %}
-			<li>
-				{book.title}
-			</li>
-		{% endfor %}   
-	</ul>
+	{% if list_of_req_books %}
+		<ul>
+		    {% for book in list_of_req_books %}
+				<li>
+					{{book.title}}
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		    <p>Oops! It seems that we don't have the book you want.</p>
+	{% endif %}
+	{{log}}
 {% endblock content %}}

@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from .models import Book, Author, BookInstance, Genre
 
+
 def index(request):
     """
     Displays main page of the site
@@ -18,18 +19,44 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors},
+        context={
+        	'num_books':num_books,
+        	'num_instances':num_instances,
+        	'num_instances_available':num_instances_available,
+        	'num_authors':num_authors,
+        	'fragment':'fragment',
+        },
     )
 
-"""
-def search_fragment(request, fragment):
-	#Searchs and displays books that include given fragment in their titles
-	list_of_all_books = Book.objects.all()
-	list_of_req_books = [book for book in list_of_all_books if book.title.find(fragment)]
+
+def search_fragment(request):
+	"""
+	Searchs and displays books that include given fragment in their titles
+	"""
+
+	#str method find but returns True or False
+	def find_bin(title, fragment):
+		res = title.lower().find(fragment)
+		if (res == -1):
+			return False
+		else:
+			return True
+	
+	#gets POST data
+	try:
+		request.method == "POST"
+	except:
+		pass
+	else:
+		fragment = request.POST["fragment"]
+
+	list_of_req_books = [book for book in Book.objects.all() if find_bin(book.title, fragment)]
 
 	return render(
 		request, 
 		"src_frg.html", 
-		context={"list_of_req_books":list_of_req_books}, 
+		context={
+			"list_of_req_books":list_of_req_books,
+			"fragment":fragment,
+		}, 
 	)
-"""
