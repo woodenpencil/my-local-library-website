@@ -15,13 +15,6 @@
   	<ul>
     	<li><strong>Books:</strong> {{ num_books }}</li>
 
-		<form action="{% url 'src_frg' %}" method="post">
-			{% csrf_token %}
-			<label for="fragment">Fragment of title of the desired book:</label>
-			<input id="fragment" type="text" name="fragment">
-			<input type="submit" value="Search">
-		</form>
-
     	<li><strong>Copies:</strong> {{ num_instances }}</li>
     	<li><strong>Copies available:</strong> {{ num_instances_available }}</li>
     	<li><strong>Authors:</strong> {{ num_authors }}</li>
