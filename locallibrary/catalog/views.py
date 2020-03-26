@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic
 
 # Create your views here.
 
@@ -18,7 +19,7 @@ def index(request):
     
     return render(
         request,
-        'index.html',
+        'catalog/index.html',
         context={
         	'num_books':num_books,
         	'num_instances':num_instances,
@@ -26,4 +27,33 @@ def index(request):
         	'num_authors':num_authors,
         },
     )
+
+class BookListView(generic.ListView):
+    """
+    Displays list of avaliable books
+    """
+    model = Book
+    paginate_by = 5
+
+class BookDetailView(generic.DetailView):
+    """
+    Displays detail information about a book
+    """
+    model = Book
+
+class AuthorListView(generic.ListView):
+    """
+    Displays list of authors
+    """
+    model = Author
+    paginate_by = 5
+
+class AuthorDetailView(generic.DetailView):
+    """
+    Displays detail informaion about an author
+    """
+    model = Author
+    #template_name = 'catalog/author_detail.html'
+
+    
 

@@ -18,7 +18,7 @@ class Genre(models.Model):
 
 class Language(models.Model):
 	"""
-	Speaking language which paticular book is written on
+	Speaking language which particular book is written in
 	"""
 	name = models.CharField(max_length=20)
 
