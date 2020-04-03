@@ -1,4 +1,4 @@
-{% extends 'base_generic.html' %}
+{% extends "base_generic.html" %}
 
 {% block title %}<title>My library</title>{% endblock title %}}
 
@@ -19,5 +19,7 @@
     	<li><strong>Copies available:</strong> {{ num_instances_available }}</li>
     	<li><strong>Authors:</strong> {{ num_authors }}</li>
   	</ul>
+
+<b>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</b>
 
 {% endblock %}
